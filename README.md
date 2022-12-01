@@ -1,6 +1,10 @@
 # project
 
-This template should help get you started developing with Vue 3 in Vite.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6d548c02-77ac-4423-88a3-bfd1d82ec8e5/deploy-status)](https://app.netlify.com/sites/test-project-birthday/deploys)
+
+[Visit here](https://test-project-birthday.netlify.app/)
+
+Birthday cake calculator for people birthday.
 
 ## Recommended IDE Setup
 
