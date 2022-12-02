@@ -1,12 +1,29 @@
 <template>
   <main class="container-fluid py-2 bg-dark app">
-    <router-view />
+    <div class="text-center align-items-center d-flex flex-column justify-content-center vh-100" v-if="loading">
+      <img src="./assets/logo.svg" class="img-fluid d-block" width="128" />
+      <p class="text-white d-block">Loading</p>
+    </div>
+    <router-view v-else/>
   </main>
 </template>
 
 <script>
+import { onMounted, ref } from 'vue';
+
 export default {
   name: 'App',
+  setup() {
+    const loading = ref(true);
+    onMounted(()=>{
+      setTimeout(()=>{
+        loading.value = false;
+      },500);
+    })
+    return {
+      loading
+    }
+  }
 };
 </script>
 
