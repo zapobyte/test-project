@@ -8,37 +8,53 @@ const giveCakeOnDate = (date) => {
   today.setHours(0, 0, 0, 0);
   const cakeDay = new Date(birthday);
   cakeDay.setHours(0, 0, 0, 0);
-  if (birthday <= today) {
-    cakeDay.setFullYear(today.getFullYear() + 1);
-    switch (cakeDay.getDay()) {
-      case 0:
-        cakeDay.setDate(cakeDay.getDate() + 2);
-        break;
-      case 6:
-        cakeDay.setDate(cakeDay.getDate() + 3);
-        break;
-      case 5:
-        cakeDay.setDate(cakeDay.getDate() + 3);
-        break;
-      default:
-        cakeDay.setDate(cakeDay.getDate() + 1);
-        break;
-    }
-  } else {
-    switch (birthday.getDay()) {
-      case 0:
-        cakeDay.setDate(birthday.getDate() + 2);
-        break;
-      case 6:
-        cakeDay.setDate(birthday.getDate() + 3);
-        break;
-      case 5:
-        cakeDay.setDate(birthday.getDate() + 3);
-        break;
-      default:
-        cakeDay.setDate(birthday.getDate() + 1);
-        break;
-    }
+  
+  // Note: Uncomment below logic to give cake next year if birthday is in the past
+  // if (birthday <= today) {
+  //   cakeDay.setFullYear(today.getFullYear() + 1);
+  //   switch (cakeDay.getDay()) {
+  //     case 0:
+  //       cakeDay.setDate(cakeDay.getDate() + 2);
+  //       break;
+  //     case 6:
+  //       cakeDay.setDate(cakeDay.getDate() + 3);
+  //       break;
+  //     case 5:
+  //       cakeDay.setDate(cakeDay.getDate() + 3);
+  //       break;
+  //     default:
+  //       cakeDay.setDate(cakeDay.getDate() + 1);
+  //       break;
+  //   }
+  // } else {
+  //   switch (birthday.getDay()) {
+  //     case 0:
+  //       cakeDay.setDate(birthday.getDate() + 2);
+  //       break;
+  //     case 6:
+  //       cakeDay.setDate(birthday.getDate() + 3);
+  //       break;
+  //     case 5:
+  //       cakeDay.setDate(birthday.getDate() + 3);
+  //       break;
+  //     default:
+  //       cakeDay.setDate(birthday.getDate() + 1);
+  //       break;
+  //   }
+  // }
+  switch (birthday.getDay()) {
+    case 0:
+      cakeDay.setDate(birthday.getDate() + 2);
+      break;
+    case 6:
+      cakeDay.setDate(birthday.getDate() + 3);
+      break;
+    case 5:
+      cakeDay.setDate(birthday.getDate() + 3);
+      break;
+    default:
+      cakeDay.setDate(birthday.getDate() + 1);
+      break;
   }
   return cakeDay.toISOString().split('T')[0];
 };

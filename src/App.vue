@@ -1,7 +1,7 @@
 <template>
   <main class="container-fluid py-2 bg-dark app">
     <div class="text-center align-items-center d-flex flex-column justify-content-center vh-100" v-if="loading">
-      <img src="./assets/logo.svg" class="img-fluid d-block" width="128" />
+      <img src="./assets/undraw_birthday_cake.svg" class="img-fluid d-block" width="256" />
       <p class="text-white d-block">Loading</p>
     </div>
     <router-view v-else/>
@@ -18,7 +18,7 @@ export default {
     onMounted(()=>{
       setTimeout(()=>{
         loading.value = false;
-      },500);
+      },1000);
     })
     return {
       loading
