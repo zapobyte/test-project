@@ -1,33 +1,40 @@
 <template>
-  <label :for="id" class="form-label">{{ label }}</label>
+  <label
+    :for="id"
+    class="form-label"
+  >{{ label }}</label>
   <div class="has-validation">
     <input
+      :id="id"
+      v-model="inputValue"
       :type="type"
       class="form-control"
-      :id="id"
       :aria-describedby="id"
       :required="isRequired"
       :placeholder="placeholder"
-      v-model="inputValue"
-    />
-    <div class="valid-feedback">{{ validFeedback }}</div>
-    <div class="invalid-feedback">{{ errorFeedback }}</div>
+    >
+    <div class="valid-feedback">
+      {{ validFeedback }}
+    </div>
+    <div class="invalid-feedback">
+      {{ errorFeedback }}
+    </div>
   </div>
 </template>
 
 <script>
-import { ref, watch } from "vue";
+import { ref, watch } from 'vue';
+
 export default {
-  name: "DynamicInput",
-  emits: ["update:modelValue"],
+  name: 'DynamicInput',
   props: {
     id: {
       type: String,
-      default: "inputId",
+      default: 'inputId',
     },
     placeholder: {
       type: String,
-      default: "",
+      default: '',
     },
     isRequired: {
       type: Boolean,
@@ -35,31 +42,35 @@ export default {
     },
     label: {
       type: String,
-      default: "",
+      default: '',
     },
     type: {
       type: String,
-      default: "text",
+      default: 'text',
+      validator(value) {
+        return ['date', 'email', 'number', 'password', 'text', 'url'].includes(value);
+      },
     },
     validFeedback: {
       type: String,
-      default: "",
+      default: '',
     },
     errorFeedback: {
       type: String,
-      default: "text",
+      default: 'text',
     },
     modelValue: {
       type: [String, Boolean, Number],
-      default: "",
+      default: '',
     },
   },
+  emits: ['update:modelValue'],
   setup(props, { emit }) {
     const inputValue = ref(props.modelValue);
-    watch(inputValue, async (newValue, oldValue) => {
-      emit("update:modelValue", newValue);
+    watch(inputValue, async (newValue) => {
+      emit('update:modelValue', newValue);
     });
-    emit("update:modelValue", inputValue.value);
+    emit('update:modelValue', inputValue.value);
     return {
       inputValue,
     };

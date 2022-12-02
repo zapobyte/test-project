@@ -1,18 +1,18 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect } from 'vitest';
 
-import { mount } from "@vue/test-utils";
-import DynamicInput from "../dynamicInput/DynamicInput.vue";
+import { mount } from '@vue/test-utils';
+import DynamicInput from '../dynamicInput/DynamicInput.vue';
 
-describe("DynamicInput.vue", () => {
-  it("with random options - renders properly", () => {
+describe('DynamicInput.vue', () => {
+  it('with random options - renders properly', () => {
     const props = {
       type: 'text',
       modelValue: 'This is a text',
       placeholder: 'MyPlaceholder',
       validFeedback: 'Valid test',
-      errorFeedback: 'Error test'
-    }
-    const wrapper = mount(DynamicInput, {props});
+      errorFeedback: 'Error test',
+    };
+    const wrapper = mount(DynamicInput, { props });
     const input = wrapper.find('input');
     expect(wrapper.emitted()).toHaveProperty('update:modelValue');
     expect(wrapper.emitted()['update:modelValue']).toHaveLength(1);
@@ -23,4 +23,4 @@ describe("DynamicInput.vue", () => {
     input.setValue('Random text');
     expect(input.element.value).toEqual('Random text');
   });
-})
+});

@@ -1,12 +1,12 @@
 <template>
   <main class="container-fluid py-2 bg-dark app">
-    <router-view></router-view>
+    <router-view />
   </main>
 </template>
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
 };
 </script>
 

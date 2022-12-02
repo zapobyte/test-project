@@ -1,15 +1,11 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
-const state = () => {
-  return {
-    users: [],
-  };
-};
+const state = () => ({
+  users: [],
+});
 
 const getters = {
-  getUsers: (store) => {
-    return store.users;
-  },
+  getUsers: (store) => store.users,
 };
 
 const actions = {
@@ -19,14 +15,20 @@ const actions = {
   addUser(data) {
     this.users.push(data);
   },
-  removeUser(data) {
-    this.users = this.users.filter((item) => {
-      return item.name !== data.name && item.dob !== data.dob;
+  editUser(data) {
+    this.users = this.users.map((item)=> {
+      if(item.id === data.id) {
+        return data;
+      }
+      return item;
     });
+  },
+  removeUser(data) {
+    this.users = this.users.filter((item) => item.id !== data.id);
   },
 };
 
-export const useMainStore = defineStore("main", {
+export const useMainStore = defineStore('main', {
   state,
   getters,
   actions,
